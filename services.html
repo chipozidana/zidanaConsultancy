@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Zidana Data Consultancy</title>
+  <meta name="description" content="Epidemiological modelling, M&E, survey design, machine learning and data analytics services by Dr Chipo Zidana, Bulawayo." />
+  <style>
+    :root {
+      --ink: #14213d; --muted: #5c677d; --accent: #0f766e; --accent-dark: #0b5a54;
+      --bg: #f6f8fa; --card: #ffffff; --line: #dde3ea; --error: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.55; }
+    a { color: var(--accent); }
+    header.site { background: var(--ink); color: #fff; }
+    header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1.25rem; }
+    header.site .brand { display: flex; align-items: center; gap: .7rem; color: #fff; text-decoration: none; font-weight: 700; }
+    header.site img { width: 42px; height: 42px; object-fit: cover; border-radius: 8px; }
+    header.site nav a { color: #fff; text-decoration: none; margin-left: 1.1rem; opacity: .85; }
+    header.site nav a:hover, header.site nav a[aria-current] { opacity: 1; text-decoration: underline; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    .hero { padding: 3rem 1.25rem 1.5rem; }
+    .hero p.eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; margin: 0 0 .4rem; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 .6rem; }
+    .hero p.lead { color: var(--muted); max-width: 46rem; margin: 0 0 1.4rem; font-size: 1.05rem; }
+    .btn { display: inline-block; background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: .75rem 1.3rem; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .btn:hover { background: var(--accent-dark); }
+    .btn.small { padding: .4rem .8rem; font-size: .9rem; background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+    .btn.small:hover { background: var(--accent); color: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; padding: 0 1.25rem 3rem; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
+    .card h2 { font-size: 1.05rem; margin: 0; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; flex: 1; }
+    .card .btn { align-self: flex-start; margin-top: .4rem; }
+    section.request { background: var(--card); border-top: 1px solid var(--line); padding: 3rem 1.25rem 4rem; }
+    section.request .wrap { max-width: 760px; }
+    section.request h2 { font-size: 1.7rem; margin: 0 0 .3rem; }
+    section.request > .wrap > p { color: var(--muted); margin: 0 0 1.8rem; }
+    fieldset { border: 0; padding: 0; margin: 0 0 1.6rem; }
+    legend { font-weight: 700; font-size: 1.05rem; margin-bottom: .8rem; padding: 0; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 620px) { .row { grid-template-columns: 1fr; } header.site nav a { margin-left: .7rem; } }
+    .field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; }
+    label { font-weight: 600; font-size: .95rem; }
+    .hint { font-weight: 400; color: var(--muted); font-size: .85rem; }
+    input[type=text], input[type=email], input[type=tel], input[type=date], select, textarea {
+      font: inherit; padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); width: 100%;
+    }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+    textarea { min-height: 140px; resize: vertical; }
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .9rem; }
+    @media (max-width: 620px) { .checks { grid-template-columns: 1fr; } }
+    .checks label { font-weight: 400; display: flex; gap: .55rem; align-items: flex-start; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+    .checks label:has(input:checked) { border-color: var(--accent); background: #ecfdf8; }
+    .checks input { margin-top: .25rem; accent-color: var(--accent); }
+    .error { color: var(--error); font-size: .9rem; margin: .5rem 0 0; }
+    .hidden { display: none; }
+    footer { text-align: center; color: var(--muted); font-size: .9rem; padding: 2rem 1rem; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/zidanaLogo.jpeg" alt="" />Zidana Data Consultancy</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/services" aria-current="page">Services</a>
+        <a href="#request">Request a service</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">Dr Chipo Zidana &middot; Bulawayo</p>
+      <h1>Specialities &amp; services</h1>
+      <p class="lead">Evidence-driven biostatistics, monitoring &amp; evaluation and data science for health, government and development partners across Zimbabwe, Botswana and the region.</p>
+      <a class="btn" href="#request">Request a service</a>
+    </section>
+
+    <section class="grid wrap" aria-label="Services">
+      <article class="card">
+        <h2>Epidemiological &amp; statistical modeling</h2>
+        <p>Survival, longitudinal, and spatial analytics; built COVID-19 transmission models for Botswana's Ministry of Health.</p>
+        <a class="btn small" href="#request" data-service="Epidemiological & statistical modeling">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>M&amp;E system design</h2>
+        <p>M&amp;E frameworks and OECD-DAC-aligned evaluation design; built DQA systems that lifted pipeline efficiency 60% at BIUST.</p>
+        <a class="btn small" href="#request" data-service="M&E system design">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Training / capacity building in data analytics tools</h2>
+        <p>Building data literacy through leadership roles: Chairwoman, African Women in Data Science; Botswana CODATA committee.</p>
+        <a class="btn small" href="#request" data-service="Training/capacity building in data analytics tools">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Baseline / endline evaluation studies</h2>
+        <p>End-to-end baseline and endline studies: design, sampling, fieldwork, analysis and reporting to measure programme results.</p>
+        <a class="btn small" href="#request" data-service="Baseline/endline evaluation studies">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Data harmonisation across multiple surveys</h2>
+        <p>Merged national MICS and DHS datasets, resolving survey weights and metadata, to model child mortality risk. fMRI/Genomic data for Autism.</p>
+        <a class="btn small" href="#request" data-service="Data harmonisation across multiple surveys">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Policy brief &amp; technical report writing from data</h2>
+        <p>Turning complex analysis into policy briefs for non-technical government leadership, from direct ministry liaison work.</p>
+        <a class="btn small" href="#request" data-service="Policy brief and technical report writing from data">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Survey design &amp; digital data collection setup</h2>
+        <p>Baseline/endline surveys and digital tools (KoboToolbox, ODK, CSPro); managed enumerator networks across Zimbabwe and Botswana.</p>
+        <a class="btn small" href="#request" data-service="Survey design and digital data collection setup">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Predictive modeling &amp; machine learning for health/social data</h2>
+        <p>ML models for real outcomes: PrEP retention prediction (published) and geospatial antimicrobial resistance modeling including maintenance forecasting.</p>
+        <a class="btn small" href="#request" data-service="Predictive modeling & machine learning for health/social data">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Data quality assurance &amp; cleaning pipelines</h2>
+        <p>Data validation protocols and indicator verification for regional health surveys, from designing DQA pipelines nationally.</p>
+        <a class="btn small" href="#request" data-service="Data quality assurance & cleaning pipelines">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Data analysis &amp; visualisation</h2>
+        <p>Statistical analysis and dashboards in R, Python, STATA, SPSS, and Power BI, built on 15+ years in health biostatistics and production data.</p>
+        <a class="btn small" href="#request" data-service="Data analysis & visualisation">Request this service</a>
+      </article>
+    </section>
+
+    <section class="request" id="request">
+      <div class="wrap">
+        <h2>Request a service</h2>
+        <p>Tell us about your project and we'll get back to you, usually within two working days.</p>
+
+        <form name="service-request" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="service-form">
+          <input type="hidden" name="form-name" value="service-request" />
+          <input type="hidden" name="subject" value="New service request via %{siteName}" />
+          <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="row">
+              <div class="field"><label for="name">Full name *</label><input type="text" id="name" name="name" autocomplete="name" required /></div>
+              <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" autocomplete="email" required /></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="phone">Phone / WhatsApp *</label><input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+263 …" required /></div>
+              <div class="field"><label for="organisation">Organisation <span class="hint">(optional)</span></label><input type="text" id="organisation" name="organisation" autocomplete="organization" /></div>
+            </div>
+          </fieldset>
+
+          <fieldset id="services-group">
+            <legend>Service(s) needed *</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="services[]" value="Epidemiological & statistical modeling" />Epidemiological &amp; statistical modeling</label>
+              <label><input type="checkbox" name="services[]" value="M&E system design" />M&amp;E system design</label>
+              <label><input type="checkbox" name="services[]" value="Training/capacity building in data analytics tools" />Training / capacity building in data analytics tools</label>
+              <label><input type="checkbox" name="services[]" value="Baseline/endline evaluation studies" />Baseline / endline evaluation studies</label>
+              <label><input type="checkbox" name="services[]" value="Data harmonisation across multiple surveys" />Data harmonisation across multiple surveys</label>
+              <label><input type="checkbox" name="services[]" value="Policy brief and technical report writing from data" />Policy brief &amp; technical report writing</label>
+              <label><input type="checkbox" name="services[]" value="Survey design and digital data collection setup" />Survey design &amp; digital data collection setup</label>
+              <label><input type="checkbox" name="services[]" value="Predictive modeling & machine learning for health/social data" />Predictive modeling &amp; machine learning</label>
+              <label><input type="checkbox" name="services[]" value="Data quality assurance & cleaning pipelines" />Data quality assurance &amp; cleaning pipelines</label>
+              <label><input type="checkbox" name="services[]" value="Data analysis & visualisation" />Data analysis &amp; visualisation</label>
+            </div>
+            <p class="error hidden" id="services-error" role="alert">Please select at least one service.</p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Project details</legend>
+            <div class="field">
+              <label for="details">Describe your project *</label>
+              <textarea id="details" name="details" placeholder="Objectives, data sources, sample size, deliverables…" required></textarea>
+            </div>
+            <div class="row">
+              <div class="field"><label for="deadline">Deadline <span class="hint">(optional)</span></label><input type="date" id="deadline" name="deadline" /></div>
+              <div class="field">
+                <label for="budget">Budget range <span class="hint">(USD)</span></label>
+                <select id="budget" name="budget">
+                  <option value="">Prefer not to say</option>
+                  <option>Under $500</option>
+                  <option>$500 – $2,000</option>
+                  <option>$2,000 – $5,000</option>
+                  <option>$5,000 – $15,000</option>
+                  <option>Over $15,000</option>
+                  <option>To be discussed</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="attachment">Supporting document <span class="hint">(optional: ToR, proposal, sample data; max 8 MB)</span></label>
+              <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip,.png,.jpg,.jpeg" />
+              <p class="error hidden" id="file-error" role="alert">That file is larger than 8 MB. Please attach a smaller file or share a link in the project description.</p>
+            </div>
+          </fieldset>
+
+          <button class="btn" type="submit">Submit request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; <span id="year"></span> Zidana Data Consultancy &middot; Bulawayo, Zimbabwe</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var form = document.getElementById('service-form');
+    var boxes = form.querySelectorAll('input[name="services[]"]');
+    var servicesError = document.getElementById('services-error');
+    var file = document.getElementById('attachment');
+    var fileError = document.getElementById('file-error');
+
+    // "Request this service" buttons pre-select the matching checkbox
+    document.querySelectorAll('[data-service]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        boxes.forEach(function (b) { if (b.value === btn.dataset.service) b.checked = true; });
+        servicesError.classList.add('hidden');
+      });
+    });
+
+    boxes.forEach(function (b) { b.addEventListener('change', function () { servicesError.classList.add('hidden'); }); });
+    file.addEventListener('change', function () { fileError.classList.add('hidden'); });
+
+    form.addEventListener('submit', function (e) {
+      var anyChecked = Array.prototype.some.call(boxes, function (b) { return b.checked; });
+      var tooBig = file.files[0] && file.files[0].size > 8 * 1024 * 1024;
+      servicesError.classList.toggle('hidden', anyChecked);
+      fileError.classList.toggle('hidden', !tooBig);
+      if (!anyChecked || tooBig) {
+        e.preventDefault();
+        (anyChecked ? file : servicesError).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>

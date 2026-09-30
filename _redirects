@@ -6,7 +6,8 @@
 
 # Friendly aliases
 /home        /                        301
-/contact     /                        301
+/contact     /services#request        301
+/request     /services#request        301
 
 # Example proxy rewrite (uncomment and edit to forward requests to an external API)
 # /api/*     https://api.example.com/:splat   200
