@@ -1,0 +1,26 @@
+# Netlify configuration
+# Static site: files are published from the repository root.
+[build]
+  publish = "."
+
+# Production (main branch)
+[context.production.environment]
+  SITE_ENV = "production"
+
+# Deploy Previews: generated automatically for every Pull Request
+[context.deploy-preview.environment]
+  SITE_ENV = "deploy-preview"
+
+# Branch deploys (any non-production branch pushed to Git)
+[context.branch-deploy.environment]
+  SITE_ENV = "branch-deploy"
+
+# Security headers applied to every response
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

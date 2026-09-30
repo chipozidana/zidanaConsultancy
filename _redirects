@@ -1,0 +1,15 @@
+# Netlify redirect rules — https://docs.netlify.com/routing/redirects/
+# Format: <from>  <to>  <status>
+
+# Old homepage URL now points to the site root
+/my%20first%20web.html   /            301
+
+# Friendly aliases
+/home        /                        301
+/contact     /                        301
+
+# Example proxy rewrite (uncomment and edit to forward requests to an external API)
+# /api/*     https://api.example.com/:splat   200
+
+# Custom 404 page for anything that doesn't match
+/*           /404.html                404
