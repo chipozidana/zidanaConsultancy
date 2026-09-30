@@ -3,48 +3,426 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Netlify Site</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Zidana Data Consultancy | Statistical Services, AI & M&E Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #12233B;
+      --navy-deep: #0C1A2B;
+      --ivory: #F4F1EA;
+      --muted: #5B6472;
+      --gold: #C99A3E;
+      --gold-soft: #E4C784;
+      --paper: #F7F5F0;
+      --border-color: rgba(0, 0, 0, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--navy-deep);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { font-family: 'Newsreader', serif; font-weight: 500; margin: 0; }
+    .eyebrow { font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 0 0 10px; }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy-deep);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 4px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: #B9C2D0;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 16px 18px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+    nav button:hover, nav button.active {
+      color: var(--gold-soft);
+      border-bottom-color: var(--gold);
+    }
+
+    .tabpanel { display: none; }
+    .tabpanel.active { display: block; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 100%);
+      color: var(--ivory);
+      padding: 70px 0 60px;
+      text-align: center;
+    }
+    .hero logo-container { margin-bottom: 20px; }
+    .hero img.logo { max-width: 150px; height: auto; border-radius: 8px; margin-bottom: 16px; }
+    .hero h1 { font-size: 42px; color: var(--ivory); line-height: 1.2; }
+    .hero h1 em { font-style: italic; color: var(--gold-soft); }
+    .hero .role { font-size: 18px; color: var(--gold-soft); margin: 10px 0 18px; font-family: 'Newsreader', serif; }
+    .hero p.desc { max-width: 65ch; margin: 0 auto 28px; color: #C7CEDA; font-size: 16px; }
+    .btnrow { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+    .btn-primary { background: var(--gold); color: var(--navy-deep); border: none; }
+    .btn-primary:hover { background: var(--gold-soft); }
+    .btn-ghost { border: 1px solid rgba(244,241,234,0.4); color: var(--ivory); background: none; }
+    .btn-ghost:hover { border-color: var(--gold-soft); color: var(--gold-soft); }
+    .tags { margin-top: 28px; font-size: 13px; color: var(--gold-soft); }
+    .tags span:not(:last-child)::after { content: "·"; margin: 0 8px; color: #5C6C82; }
+
+    /* Layout Sections */
+    section.block { padding: 56px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { border: 1px solid var(--border-color); border-radius: 10px; padding: 22px; background: rgba(255,255,255,0.7); }
+    .card h3 { font-size: 17px; margin-bottom: 8px; color: var(--navy-deep); }
+    .card p { font-size: 14px; color: var(--muted); margin: 0; }
+
+    .highlight { border-left: 3px solid var(--gold); padding: 4px 0 4px 18px; margin-bottom: 22px; }
+    .highlight h3 { font-size: 16.5px; margin-bottom: 6px; }
+    .highlight p { font-size: 14px; color: var(--muted); margin: 0; }
+    .highlight .src { font-size: 12.5px; color: var(--gold); margin-top: 5px; font-weight: 500; }
+
+    .credlist { list-style: none; padding: 0; margin: 0; font-size: 14px; }
+    .credlist li { padding: 10px 0; border-bottom: 1px solid var(--border-color); }
+
+    .supv { margin-bottom: 16px; font-size: 14px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-color); }
+    .supv b { display: block; font-size: 15px; color: var(--navy-deep); }
+    .supv span { color: var(--muted); font-size: 13px; }
+
+    /* Form Styles */
+    section.form-section { background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 32px; margin-top: 20px; }
+    form.service-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    form.service-form .full-width { grid-column: 1 / -1; }
+    label { font-weight: 600; font-size: 13px; color: var(--navy-deep); display: block; margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 6px; font: inherit; font-size: 14px; background: #fff;
+    }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); border-color: transparent; }
+    fieldset { border: 0; padding: 0; margin: 0; }
+    fieldset label { font-weight: normal; display: inline-block; margin-right: 16px; cursor: pointer; }
+    fieldset input { width: auto; margin-right: 6px; }
+    .hidden { display: none !important; }
+
+    /* Contact Banner */
+    .contactband { background: var(--navy-deep); color: var(--ivory); }
+    .contactband h2 { color: var(--ivory); font-size: 28px; text-align: center; margin-bottom: 8px; }
+    .contactband > .wrap > p { text-align: center; color: #C7CEDA; margin: 0 0 30px; }
+    .directrow { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--gold-soft); margin-top: 32px; }
+
+    footer { text-align: center; font-size: 12px; color: var(--muted); padding: 24px 0; background: var(--paper); border-top: 1px solid var(--border-color); }
+  </style>
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p>My website is live on Netlify.</p>
-  <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Contact Us</title>
-</head>
-<body>
 
-  <h1>Contact Us</h1>
+  <!-- Sticky Navigation Header -->
+  <nav id="tabnav">
+    <button id="nav-home" class="active" onclick="showTab('home')">Home</button>
+    <button id="nav-about" onclick="showTab('about')">About Us</button>
+    <button id="nav-services" onclick="showTab('services')">Services &amp; AI Solutions</button>
+    <button id="nav-portfolio" onclick="showTab('portfolio')">Projects &amp; Impact</button>
+    <button id="nav-academic" onclick="showTab('academic')">Academic &amp; Training</button>
+    <button id="nav-request" onclick="showTab('request')">Request a Service</button>
+  </nav>
 
-  <!-- PASTE YOUR NETLIFY FORM CODE HERE -->
-  <form name="contact" method="POST" data-netlify="true" action="/success.html">
-    <input type="hidden" name="form-name" value="contact" />
+  <!-- HOME TAB -->
+  <div id="panel-home" class="tabpanel active">
+    <header class="hero">
+      <div class="wrap">
+        <img src="/zidanaLogo.jpeg" alt="Zidana Data Consultancy Logo" class="logo" onerror="this.style.display='none'" />
+        <p class="eyebrow">Advanced Analytics · Artificial Intelligence · M&amp;E Solutions</p>
+        <h1>Zidana Data <em>Consultancy</em></h1>
+        <p class="role">Transforming Complex Health, Survey &amp; Operational Data into Actionable Decisions</p>
+        <p class="desc">A premier African analytics consultancy offering end-to-end data science, biostatistics, artificial intelligence, and Monitoring &amp; Evaluation (M&amp;E) solutions for governments, NGOs, enterprise businesses, and research institutions.</p>
+        <div class="btnrow">
+          <button class="btn btn-primary" onclick="showTab('request')">Request a Proposal</button>
+          <button class="btn btn-ghost" onclick="showTab('services')">Explore Services</button>
+        </div>
+        <p class="tags">
+          <span>Multimodal AI &amp; Machine Learning</span>
+          <span>Biostatistics</span>
+          <span>M&amp;E Systems</span>
+          <span>Survey Engineering</span>
+          <span>R / Python / Power BI / STATA</span>
+        </p>
+      </div>
+    </header>
+  </div>
 
-    <p>
-      <label for="name">Your Name:</label><br />
-      <input type="text" id="name" name="name" required />
-    </p>
+  <!-- ABOUT TAB -->
+  <div id="panel-about" class="tabpanel">
+    <section class="block wrap">
+      <p class="eyebrow">About Zidana Data Consultancy</p>
+      <h2 style="font-size:28px; margin-bottom:16px;">Evidence-Driven Analytical Excellence</h2>
+      <p style="max-width:75ch; color:var(--muted); font-size:15.5px; margin-bottom:28px;">
+        Zidana Data Consultancy is a regional statistics, M&amp;E, and artificial intelligence consultancy firm operating across Southern Africa. We bridge the gap between technical data engineering and executive policy decision-making. Our consultants bring over 15 years of experience in managing large-scale population surveys, spatial epidemiology, clinical biostatistics, financial forecasting, and machine learning deployments.
+      </p>
 
-    <p>
-      <label for="email">Your Email:</label><br />
-      <input type="email" id="email" name="email" required />
-    </p>
+      <div style="background: rgba(18, 35, 59, 0.03); border: 1px solid var(--border-color); border-radius: 10px; padding: 24px; margin-bottom: 32px;">
+        <p class="eyebrow">Consultancy Leadership</p>
+        <h3 style="font-size:22px; font-family:'Newsreader', serif; margin-bottom:6px;">Dr. Chipo Zidana — Lead Consultant</h3>
+        <p style="color:var(--gold); font-weight:600; font-size:13.5px; margin-top:0;">PhD in Statistics · Senior Biostatistician &amp; Data Scientist</p>
+        <p style="color:var(--muted); font-size:14.5px;">
+          Dr. Zidana guides the methodology and quality standards across all projects at Zidana Data Consultancy. With extensive leadership in university statistical service units, multi-country clinical trials, and epidemiological modeling for government health ministries, she leads a team of specialist consultants in biostatistics, AI engineering, and M&amp;E framework design.
+        </p>
+      </div>
 
-    <p>
-      <label for="message">Message:</label><br />
-      <textarea id="message" name="message" rows="5" required></textarea>
-    </p>
+      <p class="eyebrow">Lead Consultant Credentials &amp; Leadership Roles</p>
+      <ul class="credlist">
+        <li><b>PhD in Statistics</b> — Çukurova University, Adana, Turkey</li>
+        <li><b>MSc in Mathematics</b> — University of Zimbabwe</li>
+        <li><b>BSc (Hons) Applied Mathematics</b> — National University of Science and Technology (NUST), Zimbabwe</li>
+        <li><b>Accredited Assessor &amp; Moderator</b> — Botswana Qualifications Authority (NCQF Level 8–9)</li>
+        <li><b>Chairwoman &amp; Coordinating Chair</b> — African Women in Data Science</li>
+        <li><b>Scientific Chair</b> — International Biometric Society Sub-Saharan African Network (IBS SUSAN 2027)</li>
+        <li><b>Fellow &amp; Co-Chair</b> — Zimbabwe Young Academy of Sciences (ZIMYAS)</li>
+        <li><b>National Committee Member</b> — Botswana CODATA National Committee</li>
+        <li><b>Ambassador for Zimbabwe</b> — Committee for Women in Mathematics, International Mathematical Union (IMU)</li>
+      </ul>
+    </section>
+  </div>
 
-    <p>
-      <button type="submit">Send</button>
-    </p>
-  </form>
+  <!-- SERVICES & AI TAB -->
+  <div id="panel-services" class="tabpanel">
+    <section class="block wrap">
+      <p class="eyebrow">Capabilities &amp; Solutions</p>
+      <h2 style="font-size:28px; margin-bottom:24px;">Services &amp; Artificial Intelligence Solutions</h2>
+      
+      <div class="grid">
+        <div class="card">
+          <h3>Artificial Intelligence &amp; Multimodal Fusion</h3>
+          <p>Cutting-edge AI architectures, including Multi-Modal Variational Autoencoders (VAEs) and Deep Learning models that integrate unstructured genomics, fMRI, and text data for predictive insights.</p>
+        </div>
+        <div class="card">
+          <h3>Predictive Analytics &amp; Machine Learning</h3>
+          <p>Custom supervised/unsupervised machine learning algorithms for health outcomes (e.g., treatment retention, disease risk prediction), customer behavior, and financial forecasting.</p>
+        </div>
+        <div class="card">
+          <h3>Biostatistics &amp; Epidemiological Modeling</h3>
+          <p>Survival analytics, age-structured transmission models, longitudinal studies, spatial statistics, and clinical trial data processing (SPSS, R, STATA, Python).</p>
+        </div>
+        <div class="card">
+          <h3>M&amp;E System Design &amp; DQA</h3>
+          <p>OECD-DAC-aligned Monitoring &amp; Evaluation frameworks, routine Data Quality Assessments (DQA), and automated operational reporting pipelines.</p>
+        </div>
+        <div class="card">
+          <h3>Survey Engineering &amp; Mobile Data Collection</h3>
+          <p>End-to-end design for baseline/endline surveys utilizing KoboToolbox, ODK, and CSPro with active enumerator network coordination across Southern Africa.</p>
+        </div>
+        <div class="card">
+          <h3>Data Harmonization &amp; Microdata Integration</h3>
+          <p>Merging national MICS/DHS surveys, adjusting sample weights, resolving metadata disparities, and structuring microdata for policy research.</p>
+        </div>
+        <div class="card">
+          <h3>Dashboards &amp; Executive Reporting</h3>
+          <p>Interactive Power BI, Tableau, and R Shiny dashboards designed to translate technical metrics into intuitive decisions for executive boards and government leaders.</p>
+        </div>
+        <div class="card">
+          <h3>ESG &amp; Compliance Data Systems</h3>
+          <p>Structuring and auditing Environmental, Social, and Governance (ESG) metrics and safety compliance frameworks for corporate and extractives reporting.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
+  <!-- PORTFOLIO / PROJECTS TAB -->
+  <div id="panel-portfolio" class="tabpanel">
+    <section class="block wrap">
+      <p class="eyebrow">Impact &amp; Case Studies</p>
+      <h2 style="font-size:28px; margin-bottom:24px;">Selected Projects &amp; Research Highlights</h2>
+
+      <div class="highlight">
+        <h3>Multimodal AI for Precision Diagnostics</h3>
+        <p>Built a Multi-Modal Variational Autoencoder fusing genomic WGS and neuroimaging fMRI data, yielding a 20% performance improvement in predicting MCI-to-Alzheimer's conversion.</p>
+        <p class="src">Invited Keynote — Harvard Health Systems Innovation Lab</p>
+      </div>
+      <div class="highlight">
+        <h3>Machine Learning for Healthcare Retention</h3>
+        <p>Engineered predictive machine learning models identifying key determinants of PrEP retention using field survey data across urban Zimbabwe.</p>
+        <p class="src">Published in African Journal of AIDS Research</p>
+      </div>
+      <div class="highlight">
+        <h3>National Epidemic Modeling for Government Pandemic Response</h3>
+        <p>Formulated age-structured mixture compartmental models to forecast transmission dynamics and guide resource allocation for the Ministry of Health.</p>
+        <p class="src">Journal of Contemporary Studies in Epidemiology &amp; Public Health</p>
+      </div>
+      <div class="highlight">
+        <h3>Multi-Country Child Mortality Risk Modeling</h3>
+        <p>Harmonized and weighted complex survey microdata (MICS and DHS) across multiple countries to evaluate systemic drivers of child mortality.</p>
+        <p class="src">Presented at 8th African Population Conference</p>
+      </div>
+      <div class="highlight">
+        <h3>Statistical Distribution Modeling in Oncology</h3>
+        <p>Applied Gamma-Odd Topp-Leone-G statistical family models to analyze complex survival patterns in cancer registry data.</p>
+        <p class="src">Revista Colombiana de Estadística</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ACADEMIC & TRAINING TAB -->
+  <div id="panel-academic" class="tabpanel">
+    <section class="block wrap">
+      <p class="eyebrow">Capacity Building &amp; Education</p>
+      <h2 style="font-size:28px; margin-bottom:18px;">Academic Supervision, Mentorship &amp; Training</h2>
+      <p style="color:var(--muted); font-size:15px; max-width:70ch; margin-bottom:30px;">
+        Zidana Data Consultancy is committed to building quantitative capacity across Africa through structured postgraduate research supervision, institutional capacity building, and leadership in regional women-in-STEM initiatives.
+      </p>
+
+      <h3 style="font-size:20px; font-family:'Newsreader', serif; margin-bottom:14px;">Postgraduate Supervision &amp; Mentorship Highlights</h3>
+      
+      <div class="supv">
+        <b>MSc Supervision — Wits University</b>
+        <span>Hybrid DCC-MGARCH-Deep Learning Approach to Financial Time Series Forecasting (Amanda Gwala)</span>
+      </div>
+      <div class="supv">
+        <b>MSc Supervision — BIUST</b>
+        <span>Predictive Models for Breast Cancer Brain Metastasis: Integration of Genomic and Neuroimaging Data (Grace Mulenga)</span>
+      </div>
+      <div class="supv">
+        <b>MSc Supervision — AIMS Ghana</b>
+        <span>Data Fusion: Predicting Glioblastoma Tumors Using Gene-Derived Neurological Features (Bashira K. Quartey)</span>
+      </div>
+      <div class="supv">
+        <b>PhD Supervision — BIUST (Ongoing)</b>
+        <span>Machine Learning Applications in Plant-Livestock Forecasting in Semi-Arid Regions (Lechiile Tuduetso)</span>
+      </div>
+      <div class="supv">
+        <b>Institutional Capacity Building &amp; Workshops</b>
+        <span>Organized machine learning mentorship workshops and data science training programs for African Women in Data Science and regional university research units.</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- REQUEST A SERVICE TAB (Single Merged Netlify Form) -->
+  <div id="panel-request" class="tabpanel">
+    <section class="block wrap">
+      <p class="eyebrow">Work With Us</p>
+      <h2 style="font-size:28px; margin-bottom:8px;">Request a Consultancy Service</h2>
+      <p style="color:var(--muted); margin-bottom:24px;">Tell us about your organization's data or research needs and we will get back to you with a tailored proposal.</p>
+
+      <div class="form-section">
+        <!-- Netlify Integrated Form -->
+        <form name="services" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" class="service-form">
+          <input type="hidden" name="form-name" value="services" />
+          <input type="hidden" name="subject" value="New Service Request — Zidana Data Consultancy" />
+
+          <!-- Spam Honeypot Field -->
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div>
+            <label for="service-name">Full Name *</label>
+            <input type="text" id="service-name" name="name" required placeholder="e.g. Jane Doe" />
+          </div>
+
+          <div>
+            <label for="service-email">Email Address *</label>
+            <input type="email" id="service-email" name="email" required placeholder="name@company.com" />
+          </div>
+
+          <div>
+            <label for="service-phone">Phone Number (Optional)</label>
+            <input type="tel" id="service-phone" name="phone" placeholder="+263 ..." />
+          </div>
+
+          <div>
+            <label for="service-company">Company / Organization (Optional)</label>
+            <input type="text" id="service-company" name="company" placeholder="Organization name" />
+          </div>
+
+          <div class="full-width">
+            <label for="service-type">Service Needed *</label>
+            <select id="service-type" name="service" required>
+              <option value="">-- Select a service category --</option>
+              <option value="Artificial Intelligence & ML">Artificial Intelligence &amp; Machine Learning Solutions</option>
+              <option value="Data Analysis & Biostatistics">Data Analysis &amp; Biostatistics</option>
+              <option value="M&E System Design">M&amp;E System Design &amp; Data Quality Assessment</option>
+              <option value="Dashboards & Reporting">Dashboards &amp; Executive Reporting (Power BI)</option>
+              <option value="Survey Engineering">Surveys &amp; Digital Data Collection (ODK/Kobo)</option>
+              <option value="Thesis & Dissertation Support">Postgraduate Thesis &amp; Dissertation Analysis</option>
+              <option value="Institutional Training">Training &amp; Capacity Building</option>
+              <option value="Other">Other Custom Request</option>
+            </select>
+          </div>
+
+          <div class="full-width">
+            <label for="service-budget">Estimated Budget Range (Optional)</label>
+            <select id="service-budget" name="budget">
+              <option value="">-- Select budget range --</option>
+              <option value="Under $1,000">Under $1,000</option>
+              <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+              <option value="$3,000 - $10,000">$3,000 - $10,000</option>
+              <option value="Over $10,000">Over $10,000</option>
+            </select>
+          </div>
+
+          <div class="full-width">
+            <fieldset>
+              <legend><label>Preferred Contact Method:</label></legend>
+              <label><input type="radio" name="contact-method" value="Email" checked /> Email</label>
+              <label><input type="radio" name="contact-method" value="Phone" /> Phone</label>
+            </fieldset>
+          </div>
+
+          <div class="full-width">
+            <label for="service-details">Project Details &amp; Objectives *</label>
+            <textarea id="service-details" name="details" rows="5" required placeholder="Please outline the dataset, objectives, expected timeline, or key deliverables..."></textarea>
+          </div>
+
+          <div class="full-width">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 15px;">Submit Service Request</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Direct Contact Footer Banner -->
+    <section class="block contactband">
+      <div class="wrap">
+        <h2>Direct Inquiries</h2>
+        <p>Prefer to speak with us directly? Reach out via phone or email.</p>
+        <div class="directrow">
+          <span>📞 +263 772 396 387</span>
+          <span>✉️ chipmuf@gmail.com</span>
+          <span>📍 Bulawayo, Zimbabwe · Global Reach</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Zidana Data Consultancy. All rights reserved. | Lead Consultant: Dr. Chipo Zidana
+    </div>
+  </footer>
+
+  <script>
+    const tabs = ['home', 'about', 'services', 'portfolio', 'academic', 'request'];
+
+    function showTab(id) {
+      tabs.forEach(tabId => {
+        const panel = document.getElementById('panel-' + tabId);
+        const navBtn = document.getElementById('nav-' + tabId);
+        if (panel) panel.classList.toggle('active', tabId === id);
+        if (navBtn) navBtn.classList.toggle('active', tabId === id);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
