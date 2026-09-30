@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | Zidana Data Consultancy</title>
-  <meta name="description" content="Epidemiological modelling, M&E, survey design, machine learning and data analytics services by Dr Chipo Zidana, Bulawayo." />
+  <meta name="description" content="Epidemiological modelling, M&E, survey design, machine learning, artificial intelligence and data analytics services by Dr Chipo Zidana, Bulawayo." />
   <style>
     :root {
       --ink: #14213d; --muted: #5c677d; --accent: #0f766e; --accent-dark: #0b5a54;
@@ -14,7 +14,7 @@
     body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.55; }
     a { color: var(--accent); }
     header.site { background: var(--ink); color: #fff; }
-    header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1.25rem; }
+    header.site .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 1rem; padding: .8rem 1.25rem; }
     header.site .brand { display: flex; align-items: center; gap: .7rem; color: #fff; text-decoration: none; font-weight: 700; }
     header.site img { width: 42px; height: 42px; object-fit: cover; border-radius: 8px; }
     header.site nav a { color: #fff; text-decoration: none; margin-left: 1.1rem; opacity: .85; }
@@ -49,6 +49,11 @@
     }
     input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
     textarea { min-height: 140px; resize: vertical; }
+    .section-head { padding: 0 1.25rem; margin: 0 0 1rem; }
+    .section-head h2 { font-size: 1.4rem; margin: 0 0 .3rem; }
+    .section-head p { color: var(--muted); margin: 0; max-width: 46rem; }
+    .section-head .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .75rem; margin: 0 0 .2rem; }
+    .group-label { grid-column: 1 / -1; margin: .6rem 0 0; font-weight: 700; font-size: .85rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
     .checks { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .9rem; }
     @media (max-width: 620px) { .checks { grid-template-columns: 1fr; } }
     .checks label { font-weight: 400; display: flex; gap: .55rem; align-items: flex-start; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
@@ -66,6 +71,7 @@
       <nav>
         <a href="/">Home</a>
         <a href="/services" aria-current="page">Services</a>
+        <a href="#ai">AI services</a>
         <a href="#request">Request a service</a>
       </nav>
     </div>
@@ -75,11 +81,15 @@
     <section class="hero wrap">
       <p class="eyebrow">Dr Chipo Zidana &middot; Bulawayo</p>
       <h1>Specialities &amp; services</h1>
-      <p class="lead">Evidence-driven biostatistics, monitoring &amp; evaluation and data science for health, government and development partners across Zimbabwe, Botswana and the region.</p>
+      <p class="lead">Evidence-driven biostatistics, monitoring &amp; evaluation, data science and artificial intelligence for health, government and development partners across Zimbabwe, Botswana and the region.</p>
       <a class="btn" href="#request">Request a service</a>
     </section>
 
-    <section class="grid wrap" aria-label="Services">
+    <section class="wrap section-head" id="data">
+      <h2>Data, statistics &amp; evaluation</h2>
+    </section>
+
+    <section class="grid wrap" aria-label="Data, statistics and evaluation services">
       <article class="card">
         <h2>Epidemiological &amp; statistical modeling</h2>
         <p>Survival, longitudinal, and spatial analytics; built COVID-19 transmission models for Botswana's Ministry of Health.</p>
@@ -132,6 +142,50 @@
       </article>
     </section>
 
+    <section class="wrap section-head" id="ai">
+      <p class="eyebrow">New</p>
+      <h2>Artificial intelligence services</h2>
+      <p>Applying AI and machine learning to real-world health, development and business problems, grounded in rigorous statistics and ethical data practice.</p>
+    </section>
+
+    <section class="grid wrap" aria-label="Artificial intelligence services">
+      <article class="card">
+        <h2>AI strategy &amp; readiness assessment</h2>
+        <p>Practical roadmaps for adopting AI responsibly: use-case prioritisation, data readiness audits and governance aligned to local regulations.</p>
+        <a class="btn small" href="#request" data-service="AI strategy &amp; readiness assessment">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Generative AI &amp; large language model solutions</h2>
+        <p>Chatbots, document summarisation and knowledge assistants built on LLMs and retrieval (RAG) over your own reports and data.</p>
+        <a class="btn small" href="#request" data-service="Generative AI &amp; large language model solutions">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>AI for health &amp; clinical decision support</h2>
+        <p>Risk scoring, early-warning and triage models for health programmes, validated on local data and designed for clinician trust.</p>
+        <a class="btn small" href="#request" data-service="AI for health &amp; clinical decision support">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Computer vision &amp; image analytics</h2>
+        <p>Image classification and detection for medical imaging, satellite and field photos, from annotation to deployed model.</p>
+        <a class="btn small" href="#request" data-service="Computer vision &amp; image analytics">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Natural language processing &amp; text analytics</h2>
+        <p>Extracting insight from open-ended survey responses, clinical notes and social media, including local-language text.</p>
+        <a class="btn small" href="#request" data-service="Natural language processing &amp; text analytics">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>Responsible AI, ethics &amp; model auditing</h2>
+        <p>Bias, fairness and explainability reviews; documentation and monitoring so AI systems stay accurate, transparent and accountable.</p>
+        <a class="btn small" href="#request" data-service="Responsible AI, ethics &amp; model auditing">Request this service</a>
+      </article>
+      <article class="card">
+        <h2>AI training &amp; upskilling for teams</h2>
+        <p>Hands-on workshops on AI tools, prompt engineering and machine learning in Python/R for analysts, researchers and leadership.</p>
+        <a class="btn small" href="#request" data-service="AI training &amp; upskilling for teams">Request this service</a>
+      </article>
+    </section>
+
     <section class="request" id="request">
       <div class="wrap">
         <h2>Request a service</h2>
@@ -157,6 +211,7 @@
           <fieldset id="services-group">
             <legend>Service(s) needed *</legend>
             <div class="checks">
+              <p class="group-label">Data, statistics &amp; evaluation</p>
               <label><input type="checkbox" name="services[]" value="Epidemiological & statistical modeling" />Epidemiological &amp; statistical modeling</label>
               <label><input type="checkbox" name="services[]" value="M&E system design" />M&amp;E system design</label>
               <label><input type="checkbox" name="services[]" value="Training/capacity building in data analytics tools" />Training / capacity building in data analytics tools</label>
@@ -167,6 +222,14 @@
               <label><input type="checkbox" name="services[]" value="Predictive modeling & machine learning for health/social data" />Predictive modeling &amp; machine learning</label>
               <label><input type="checkbox" name="services[]" value="Data quality assurance & cleaning pipelines" />Data quality assurance &amp; cleaning pipelines</label>
               <label><input type="checkbox" name="services[]" value="Data analysis & visualisation" />Data analysis &amp; visualisation</label>
+              <p class="group-label">Artificial intelligence</p>
+              <label><input type="checkbox" name="services[]" value="AI strategy &amp; readiness assessment" />AI strategy &amp; readiness assessment</label>
+              <label><input type="checkbox" name="services[]" value="Generative AI &amp; large language model solutions" />Generative AI &amp; large language model solutions</label>
+              <label><input type="checkbox" name="services[]" value="AI for health &amp; clinical decision support" />AI for health &amp; clinical decision support</label>
+              <label><input type="checkbox" name="services[]" value="Computer vision &amp; image analytics" />Computer vision &amp; image analytics</label>
+              <label><input type="checkbox" name="services[]" value="Natural language processing &amp; text analytics" />Natural language processing &amp; text analytics</label>
+              <label><input type="checkbox" name="services[]" value="Responsible AI, ethics &amp; model auditing" />Responsible AI, ethics &amp; model auditing</label>
+              <label><input type="checkbox" name="services[]" value="AI training &amp; upskilling for teams" />AI training &amp; upskilling for teams</label>
             </div>
             <p class="error hidden" id="services-error" role="alert">Please select at least one service.</p>
           </fieldset>
