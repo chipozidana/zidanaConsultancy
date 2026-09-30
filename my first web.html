@@ -3,48 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Netlify Site</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Zidana Data Consultancy</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px; color: #1f2937; line-height: 1.5; }
+    header { text-align: center; }
+    header img { max-width: 160px; height: auto; }
+    section { margin-top: 40px; padding: 24px; border: 1px solid #e5e7eb; border-radius: 8px; }
+    label { font-weight: 600; }
+    input, select, textarea { width: 100%; box-sizing: border-box; padding: 8px; margin-top: 4px; border: 1px solid #d1d5db; border-radius: 4px; font: inherit; }
+    fieldset { border: 0; padding: 0; margin: 0; }
+    fieldset label { font-weight: normal; display: block; }
+    fieldset input { width: auto; margin-right: 6px; }
+    button { background: #1d4ed8; color: #fff; border: 0; padding: 10px 20px; border-radius: 4px; font: inherit; cursor: pointer; }
+    button:hover { background: #1e40af; }
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p>My website is live on Netlify.</p>
-  <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Contact Us</title>
-</head>
-<body>
 
-  <h1>Contact Us</h1>
+  <header>
+    <img src="/zidanaLogo.jpeg" alt="Zidana Data Consultancy logo" />
+    <h1>Hello, World!</h1>
+    <p>My website is live on Netlify.</p>
+  </header>
 
-  <!-- PASTE YOUR NETLIFY FORM CODE HERE -->
-  <form name="contact" method="POST" data-netlify="true" action="/success.html">
-    <input type="hidden" name="form-name" value="contact" />
+  <section id="services">
+    <h2>Request a Service</h2>
+    <p>Tell us what you need and we'll get back to you with a proposal.</p>
 
-    <p>
-      <label for="name">Your Name:</label><br />
-      <input type="text" id="name" name="name" required />
-    </p>
+    <form name="services" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+      <input type="hidden" name="form-name" value="services" />
+      <input type="hidden" name="subject" value="New service request from %{siteName}" />
+      <p class="hidden">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
 
-    <p>
-      <label for="email">Your Email:</label><br />
-      <input type="email" id="email" name="email" required />
-    </p>
+      <p>
+        <label for="service-name">Full Name:</label>
+        <input type="text" id="service-name" name="name" required />
+      </p>
 
-    <p>
-      <label for="message">Message:</label><br />
-      <textarea id="message" name="message" rows="5" required></textarea>
-    </p>
+      <p>
+        <label for="service-email">Email:</label>
+        <input type="email" id="service-email" name="email" required />
+      </p>
 
-    <p>
-      <button type="submit">Send</button>
-    </p>
-  </form>
+      <p>
+        <label for="service-phone">Phone (optional):</label>
+        <input type="tel" id="service-phone" name="phone" />
+      </p>
+
+      <p>
+        <label for="service-company">Company / Organisation (optional):</label>
+        <input type="text" id="service-company" name="company" />
+      </p>
+
+      <p>
+        <label for="service-type">Service Needed:</label>
+        <select id="service-type" name="service" required>
+          <option value="">-- Select a service --</option>
+          <option value="Data Analysis">Data Analysis</option>
+          <option value="Dashboards & Reporting">Dashboards &amp; Reporting</option>
+          <option value="Data Cleaning & Management">Data Cleaning &amp; Management</option>
+          <option value="Surveys & Research">Surveys &amp; Research</option>
+          <option value="Training & Capacity Building">Training &amp; Capacity Building</option>
+          <option value="Other">Other</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="service-budget">Estimated Budget (optional):</label>
+        <select id="service-budget" name="budget">
+          <option value="">-- Select a range --</option>
+          <option value="Under $500">Under $500</option>
+          <option value="$500 - $2,000">$500 - $2,000</option>
+          <option value="$2,000 - $5,000">$2,000 - $5,000</option>
+          <option value="Over $5,000">Over $5,000</option>
+        </select>
+      </p>
+
+      <fieldset>
+        <legend><label>Preferred Contact Method:</label></legend>
+        <label><input type="radio" name="contact-method" value="Email" checked /> Email</label>
+        <label><input type="radio" name="contact-method" value="Phone" /> Phone</label>
+      </fieldset>
+
+      <p>
+        <label for="service-details">Project Details:</label>
+        <textarea id="service-details" name="details" rows="5" required></textarea>
+      </p>
+
+      <p>
+        <button type="submit">Submit Request</button>
+      </p>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <p>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+      </p>
+
+      <p>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required />
+      </p>
+
+      <p>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </p>
+
+      <p>
+        <button type="submit">Send</button>
+      </p>
+    </form>
+  </section>
 
 </body>
 </html>
